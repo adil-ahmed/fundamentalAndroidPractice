@@ -17,37 +17,34 @@ class AlertActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         //Alert Implementation
-        val addContactDialog = AlertDialog.Builder(this)
-            .setTitle("Add Contact")
-            .setMessage("Want to add new person in your contact list?")
-            .setIcon(R.drawable.ic_add)
-            .setPositiveButton("Yes") {_,_->
-                Toast.makeText(this, "Contact Added!", Toast.LENGTH_SHORT).show()
-            }
-            .setNegativeButton("No") {_,_->
-                Toast.makeText(this, "Not added", Toast.LENGTH_SHORT).show()
-            }.create()
 
         binding.btnAlt1.setOnClickListener {
-            addContactDialog.show()
+            AlertDialog.Builder(this)
+                .setTitle("Add Contact")
+                .setMessage("Want to add new person in your contact list?")
+                .setIcon(R.drawable.ic_add)
+                .setPositiveButton("Yes") {_,_->
+                    Toast.makeText(this, "Contact Added!", Toast.LENGTH_SHORT).show()
+                }
+                .setNegativeButton("No") {_,_->
+                    Toast.makeText(this, "Not added", Toast.LENGTH_SHORT).show()
+                }.create().show()
         }
-        val options = arrayOf("First Item", "Second Item", "Third Item")
-        val singleChoiceDialog = AlertDialog.Builder(this)
-            .setTitle("Choose one options")
-            .setSingleChoiceItems(options, 0) {dialogInterface,i->
-                Toast.makeText(this,"You clicked on ${options[i]}", Toast.LENGTH_SHORT).show()
-            }
-            .setPositiveButton("Accept") {_,_->
-                Toast.makeText(this, "You accepted the single choice dialog", Toast.LENGTH_SHORT).show()
-            }
-            .setNegativeButton("Reject") {_,_->
-                Toast.makeText(this, "You rejected the single choice dialog", Toast.LENGTH_SHORT).show()
-            }.create()
+
 
         binding.btnAlt2.setOnClickListener {
-            singleChoiceDialog.show()
-
-
+            val options = arrayOf("First Item", "Second Item", "Third Item")
+            AlertDialog.Builder(this)
+                .setTitle("Choose one options")
+                .setSingleChoiceItems(options, 0) {dialogInterface,i->
+                    Toast.makeText(this,"You clicked on ${options[i]}", Toast.LENGTH_SHORT).show()
+                }
+                .setPositiveButton("Accept") {_,_->
+                    Toast.makeText(this, "You accepted the single choice dialog", Toast.LENGTH_SHORT).show()
+                }
+                .setNegativeButton("Reject") {_,_->
+                    Toast.makeText(this, "You rejected the single choice dialog", Toast.LENGTH_SHORT).show()
+                }.create().show()
         }
     }
 
